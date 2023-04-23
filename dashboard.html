@@ -1,0 +1,364 @@
+<?php 
+session_start();
+IF(ISSET($_SESSION['email'])){
+?>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PG CHD</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/Pretty-Footer.css">
+</head>
+
+<body>
+     <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header"><a href="#" class="navbar-brand navbar-link">Aavas</a>
+            <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+        </div>
+        <div class="collapse navbar-collapse" id="navcol-1">
+            <ul class="nav navbar-nav">
+                <li class="dropdown"><a data-toggle="dropdown" aria-expanded="false" href="#" class="dropdown-toggle">CHANDIGARH <span class="caret"></span></a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li role="presentation"><a href="#">PANCHKULA </a></li>
+                        <li role="presentation"><a href="#">MOHALI </a></li>
+                    </ul>
+                </li>
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li role="presentation"><a href="dashboard.pho">Dashboard</a>
+                    
+                </li>
+            <li role="presentation"><a href="postproperty.html">Post Property</a>    
+              
+			<li role="presentation"><a href="logout.php?destroy">Logout</a>
+            </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <div class="row dash">
+        <div class="col-md-12 dash">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4 dashboard"><span class="dashboard">Dashboard |</span><span class="username"><?php echo $_SESSION['fullname'];?>; </span></div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-2 edit">
+                <h3><i class="glyphicon glyphicon-edit"></i> <a href="#" class="edit" data-toggle="modal" data-target="#editprofile">Edit Profile</a></h3></div>
+            <div class="modal fade" role="dialog" tabindex="-1" id="editprofile">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content content">
+                        <div class="modal-header header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <h4 class="modal-title">Edit Your Profile</h4></div>
+                        <div class="modal-body">
+                            <form class="bootstrap-form-with-validation">
+                                <div class="form-group edit">
+                                    <label class="control-label" for="text">Name </label>
+                                    <input class="form-control" type="text" name="Name" placeholder="Name" id="name">
+                                </div>
+                                <div class="form-group edit">
+                                    <label class="control-label email" for="email">Email </label>
+                                    <input class="form-control" type="email" name="email" placeholder="Email" id="email">
+                                </div>
+                                <div class="form-group edit">
+                                    <label class="control-label email" for="contact">Contact No.</label>
+                                    <input class="form-control" type="text" name="contact" placeholder="Contact Number" id="contact">
+                                </div>
+                                <div class="form-group edit">
+                                    <label class="control-label email" for="gender">Gender </label>
+                                    <select class="form-control gender" name="gender">
+                                        <option value="0">Select</option>
+                                        <option value="1" id="male" name="male" type="text">Male</option>
+                                        <option value="2" id="female" name="female" type="text">Female</option>
+                                    </select>
+                                </div>
+                                <div class="form-group edit">
+                                    <label class="control-label email" for="dob">Age </label>
+                                    <input class="form-control" type="text" name="dob" placeholder="Age" id="dob">
+                                </div>
+                                <div class="form-group edit">
+                                    <label class="control-label email" for="education">Education </label>
+                                    <select class="form-control education" name="education">
+                                        <option value="0">Select</option>
+                                        <option value="1" id="ug" name="ug" type="text">Under Graduate</option>
+                                        <option value="2" id="pg" name="pg" type="text">Post Graduate</option>
+                                        <option value="3" id="btech" name="btech" type="text">Btech/BE</option>
+                                        <option value="4" id="mba" name="mba" type="text">MBA</option>
+                                        <option value="5" id="mbbs" name="mbbs" type="text">MBBS</option>
+                                        <option value="6" id="ca" name="ca" type="text">CA</option>
+                                        <option value="7" id="bca" name="bca" type="text">BCA</option>
+                                        <option value="8" id="mca" name="mca" type="text">MCA</option>
+                                        <option value="9" id="others" name="others" type="others">Others</option>
+                                    </select>
+                                </div>
+                                <div class="form-group edit">
+                                    <label class="control-label email" for="occupation">Occupation </label>
+                                    <select class="form-control occupation" name="occupation">
+                                        <option value="0">Select</option>
+                                        <option value="1" id="stu" name="stu" type="text">Student</option>
+                                        <option value="2" id="bpo" name="bpo" type="text">BPO</option>
+                                        <option value="3" id="it" name="it" type="text">IT/ITeS</option>
+                                        <option value="4" id="finance" name="finance" type="text">Finance</option>
+                                        <option value="5" id="marketing" name="marketing" type="text">Marketing</option>
+                                        <option value="6" id="hr" name="hr" type="text">HR</option>
+                                        <option value="7" id="engine" name="engine" type="text">Enginnering</option>
+                                        <option value="8" id="ps" name="ps" type="text">Professional Services</option>
+                                        <option value="9" id="others" name="others" type="others">Others</option>
+                                    </select>
+                                </div>
+                                <div class="form-group edit">
+                                    <label class="control-label" for="institute">Institute </label>
+                                    <input class="form-control" type="text" name="indtitute" placeholder="Institute" id="institute">
+                                </div>
+                                <div class="form-group edit">
+                                    <label class="control-label" for="organization">Organization</label>
+                                    <input class="form-control" type="text" name="organization" placeholder="Current Organization" id="organization">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="yourself">About Yourself</label>
+                                    <textarea class="form-control" name="yourself" placeholder="Tell us something about yourself" id="yourself" type="text"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-default" type="button" id="editclose" data-dismiss="modal">Close</button>
+                            <button class="btn btn-default" type="submit" id="editclose">Save </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
+    <div class="row myprofile">
+        <div class="col-md-12">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-7 notidash">
+                <ul class="nav nav-pills">
+                    <li class="active">
+                        <a href="#noti" class="noti" data-toggle="pill"> <i class="fa fa-bell bell" aria-hidden="true"></i>Notifications</a>
+                    </li>
+                    <li>
+                        <a href="#postings" class="noti" data-toggle="pill"> <i class="fa fa-home home" aria-hidden="true"></i>Postings</a>
+                    </li>
+                    <li>
+                        <a href="#favourite" class="noti" data-toggle="pill"> <i class="fa fa-star star" aria-hidden="true"></i>Favourties</a>
+                    </li>
+                    <li>
+                        <a href="#recent" class="noti" data-toggle="pill"> <i class="fa fa-eye eye" aria-hidden="true"></i>Recent Views</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-2 myprofile"><i class="fa fa-user-secret user"></i>
+                <h4 class="myprofile">My Profile</h4></div>
+            <div class="col-sm-2"></div>
+            <div></div>
+        </div>
+    </div>
+    <hr class="rowdivider1">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-6 tabcontent">
+                <div class="tab-content">
+                    <div id="noti" class="tab-pane fade in active">
+                        <h1>Notifications </h1></div>
+                    <div id="postings" class="tab-pane fade">
+                        <h1>Postings </h1></div>
+                    <div id="favourite" class="tab-pane fade">
+                        <h1>Favourites </h1></div>
+                    <div id="recent" class="tab-pane fade">
+                        <h1>Recent </h1></div>
+                </div>
+            </div>
+            <div class="col-sm-4 myprofile">
+                <div class="row username">
+                    <div class="col-md-12">
+                        <div class="col-sm-2"><img src="assets/img/prabhjot.jpg" class="img-circle user"></div>
+                        <div class="col-sm-10">
+                            <h3 class="username1"><?php echo $_SESSION['fullname'];?></h3></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-sm-4">
+                            <p class="user">Gender </p>
+                        </div>
+                        <div class="col-sm-2">
+                            <p class="user">: </p>
+                        </div>
+                        <div class="col-sm-6"></div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-sm-4">
+                            <p class="user">Institute </p>
+                        </div>
+                        <div class="col-sm-2">
+                            <p class="user">: </p>
+                        </div>
+                        <div class="col-sm-6"></div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-sm-4">
+                            <p class="user">Education </p>
+                        </div>
+                        <div class="col-sm-2">
+                            <p class="user">: </p>
+                        </div>
+                        <div class="col-sm-6"></div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-sm-4">
+                            <p class="user">Organization </p>
+                        </div>
+                        <div class="col-sm-2">
+                            <p class="user">: </p>
+                        </div>
+                        <div class="col-sm-6"></div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-sm-4">
+                            <p class="user">Occupation</p>
+                        </div>
+                        <div class="col-sm-2">
+                            <p class="user">: </p>
+                        </div>
+                        <div class="col-sm-6"></div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-sm-4">
+                            <p class="user">Age </p>
+                        </div>
+                        <div class="col-sm-2">
+                            <p class="user">: </p>
+                        </div>
+                        <div class="col-sm-6"></div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-sm-4">
+                            <p class="user">Email </p>
+                        </div>
+                        <div class="col-sm-2">
+                            <p class="user">: </p>
+                        </div>
+                        <div class="col-sm-6"></div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-sm-4">
+                            <p class="user">Mobile </p>
+                        </div>
+                        <div class="col-sm-2">
+                            <p class="user">: </p>
+                        </div>
+                        <div class="col-sm-6"></div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-sm-4">
+                            <p class="user">About Yourself</p>
+                        </div>
+                        <div class="col-sm-2">
+                            <p class="user">: </p>
+                        </div>
+                        <div class="col-sm-6"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+    </div>
+    <div class="row footer">
+        <div class="col-sm-12 footer">
+            <div class="col-sm-12 footer1">
+                <div class="row footercontent">
+                    <div class="col-md-12 footercontent">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-1 about">
+                            <div class="row about">
+                                <div class="col-md-12">
+                                    <div class="col-sm-12 about"><a href="#" class="about">About Us</a></div>
+                                    <div class="col-sm-12 about"><a href="#" class="about"> Contact Us</a></div>
+                                    <div class="col-sm-12 about"><a href="#" class="about"> Privacy Policy</a></div>
+                                    <div class="col-sm-12 about"><a href="#" class="about"> Cancellation Policy</a></div>
+                                    <div class="col-sm-12 about"><a href="#" class="about"> Terms and Conditiolns</a></div>
+                                    <div class="col-sm-12 about"><a href="#" class="about"> Blogs</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-2 address">
+                            <div class="row address">
+                                <div class="col-md-12">
+                                    <div class="col-sm-12 address">
+                                        <p class="about">Address </p>
+                                    </div>
+                                    <div class="col-sm-12 addres">
+                                        <p class="about">146/147, Centrum Plaza,&nbsp; </p>
+                                    </div>
+                                    <div class="col-sm-12 addres">
+                                        <p class="about"> Golf Course Road,</p>
+                                    </div>
+                                    <div class="col-sm-12 addres">
+                                        <p class="about"> Sector 53, Gurgaon - 122002</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-2 reach">
+                            <div class="row reach">
+                                <div class="col-md-12">
+                                    <div class="col-sm-12 address">
+                                        <p class="about">Reach Us</p>
+                                    </div>
+                                    <div class="col-sm-12 addres">
+                                        <p class="about"> +91 9816919394</p>
+                                    </div>
+                                    <div class="col-sm-12 addres">
+                                        <p class="about">support@aavas.in</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-2 fb">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-sm-4 face">
+                                        <a href="#" class="face"> <i class="fa fa-facebook face"></i></a>
+                                    </div>
+                                    <div class="col-sm-4 twit">
+                                        <a href="#" class="face"> <i class="fa fa-twitter twit"></i></a>
+                                    </div>
+                                    <div class="col-sm-4 insta">
+                                        <a href="#" class="face"> <i class="fa fa-instagram inst"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/validation.js"></script>
+</body>
+
+</html>
+<?php 
+}
+else{
+	echo "<script language=\"javascript\">document.location.href='index.php';</script>";	
+}
+?>

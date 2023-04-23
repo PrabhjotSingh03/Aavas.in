@@ -1,0 +1,124 @@
+<?php
+    $record_details = @$_GET['details'];
+    $query = "select * from usersignup where id='$record_details'";
+    $run1 = mysqli_query($con,$query);
+    while ($row1  = mysqli_fetch_array($run1))
+    {
+        $name = $row1['1'];
+		$email = $row1['2'];
+		$pass = $row1['3'];
+		$mob = $row1['4'];
+		
+    ?>
+    <br><br>
+    <table align='center' border='4' width='800' style='margin-top:80px'>
+        <tr>
+            <td bgcolor='yellow' colspan='7' align='center'><h2 style='margin:0 auto;'> Your Details Here </h2></td>
+        </tr>
+        <tr align='center' bgcolor='white'>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Contact Number</th>
+        </tr>
+        <tr align="center">
+            <td><?php echo $name; ?></td>
+    		<td><?php echo $email; ?></td>
+     		<td><?php echo $pass; ?></td>
+    		<td><?php echo $mob; ?></td>
+             </tr>
+        <?php } ?>
+             
+            </table>
+<!--serach-->
+            <form action="view.php" method="get">
+            <h2 style='margin-top:50px; margin-left:50px'>Search Record:<input  type="text" name="search" style='width:830px; margin-left:10px'>
+            <input type="submit" name="submit" value="Find Now"></h2> 
+            </form>
+            <?php
+			if (isset($_GET['search'])){
+			$serch_record = $_GET['search'];
+			$query2 = "select * from usersignup where name='$serch_record' OR email='$serch_record' OR mobile='$serch_record'"; 
+			
+			$run2 = mysqli_query($con,$query2);
+			?>
+            <table width="800" align="center" border="1">
+                <tr>
+                <td bgcolor='yellow' colspan='7' align='center'><h2 style='margin:0 auto;'> Search Record </h2></td>
+                </tr>
+                <tr>
+                <th width="200">Name</th>
+                <th width="300">Email</th>
+                <th width="300">Mobile No</th>
+                </tr>
+            <?php
+			while ($row2=mysqli_fetch_assoc($run2)) 
+			{
+				$name123 = $row2['name'];
+				$email123 = $row2['email'];
+				$mob123 = $row2['mobile'];
+                ?>
+                <table border="1" width="800" align="center">
+                
+                <tr align="center">
+                <td width="200"><?php echo $name123; ?></td>
+                <td width="300"><?php echo $email123; ?></td>
+                <td width="300"><?php echo $mob123; ?></td>
+                </tr>
+                </table>
+      <?php }} ?>
+       
+<table align="center" width="1000" border="4" style='margin-top:80px'>
+
+     <tr>
+     <th align="center" bgcolor="#99CCFF" colspan="11"><h1>Viewing all the records</h1></th>
+     </tr>
+     
+     <tr align="center">
+     <th>ID</th>
+     <th>Name</th>
+     <th>E-Mail</th>
+     <th>Password</th>
+     <th>Contact number</th>
+     <th>Delete</th>
+     <th>Details</th>
+     </tr>
+     
+     <tr align="center">
+	 <!--complete table-->
+<?php
+$que = "select * from usersignup ";
+$run = mysqli_query($con,$que);
+
+$i=1;
+while ($row=mysqli_fetch_array($run))
+{
+	$u_id = $row['id'];
+	$name = $row['1'];
+	$email = $row['2'];
+	$pass = $row['3'];
+	$mob = $row['4'];
+?>
+     <td align="center"><?php echo $i; $i++; ?></td>
+     <td align="center"><?php echo $name; ?></td>
+     <td align="center"><?php echo $email; ?></td>
+     <td align="center"><?php echo $pass; ?></td>
+     <td align="center"><?php echo $mob; ?></td>
+     
+     
+     <td align="center"><a href='delete_record.php?del=<?php echo $u_id; ?>'>Delete</a></td>
+    
+     <td align="center"><a href='view.php?details=<?php echo $u_id; ?>'>details </a></td>
+     </tr>
+     
+<?php } ?>
+     
+</table>
+    
+<?php echo @$_GET['deleted']; ?>
+<?php echo @$_GET['updated']; ?>
+            
+
+
+</div>
+	</body>
